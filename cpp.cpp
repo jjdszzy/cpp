@@ -1,18 +1,25 @@
 ﻿#include <iostream>
 using namespace std;
-int a[101];
+int a[1001];
+bool ans[1001];
 int main() {
-	int n;
-	cin >> n;
-	for (int i = 1; i <= n; i++) {
+	while (1) {
 		int x;
 		cin >> x;
+		if (x == 0) break;
 		a[x]++;
 	}
-	int _max = -1;
-	for (int i = 1; i <= 100; i++) {
-		if (a[i] == 1) _max = i;
+	int sum = 0;
+	for (int i = 1; i <= 1000; i++) {
+		if (a[i] != 0) {
+			sum++;
+			ans[i] = 1;
+		}
+		
 	}
-	cout << _max;
+	cout << sum << endl;
+	for (int i = 1; i <= 1000; i++) {
+		if (ans[i] == 1) cout << i << ' ';
+	}
 	return 0;
 }
