@@ -1,25 +1,27 @@
 ﻿#include <iostream>
 using namespace std;
-int a[1001];
-bool ans[1001];
+int buy[10001];
+int re[10001];
 int main() {
-	while (1) {
+	int n, m;
+	cin >> n >> m;
+	for (int i = 1; i <= n; i++) {
 		int x;
 		cin >> x;
-		if (x == 0) break;
-		a[x]++;
+		if (x>0) buy[x]++;
+		else re[-x]++;
 	}
-	int sum = 0;
-	for (int i = 1; i <= 1000; i++) {
-		if (a[i] != 0) {
-			sum++;
-			ans[i] = 1;
-		}
-		
+	int maxb = 0, maxr = 0;
+	for (int i = 1; i <= 10000; i++) {
+		if (buy[i] > maxb) maxb = buy[i];
+		if (re[i] > maxr) maxr = re[i];
 	}
-	cout << sum << endl;
-	for (int i = 1; i <= 1000; i++) {
-		if (ans[i] == 1) cout << i << ' ';
+	for (int i = 1; i <= 10000; i++) {
+		if (buy[i] == maxb) cout << i << ' ';
+	}
+	cout << endl;
+	for (int i = 1; i <= 10000; i++) {
+		if (re[i] == maxr) cout << i << ' ';
 	}
 	return 0;
 }
