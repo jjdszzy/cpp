@@ -1,27 +1,22 @@
 ﻿#include <iostream>
+#include <string>
 using namespace std;
-int buy[10001];
-int re[10001];
+int a[124];
 int main() {
-	int n, m;
-	cin >> n >> m;
-	for (int i = 1; i <= n; i++) {
-		int x;
-		cin >> x;
-		if (x>0) buy[x]++;
-		else re[-x]++;
+	string s;
+	getline(cin, s);
+	for (int i = 0; i <= s.size()-1; i++) {
+		int n = s[i];
+		if ('a'<=n&&n<='z') {
+			a[n]++;
+		}
 	}
-	int maxb = 0, maxr = 0;
-	for (int i = 1; i <= 10000; i++) {
-		if (buy[i] > maxb) maxb = buy[i];
-		if (re[i] > maxr) maxr = re[i];
-	}
-	for (int i = 1; i <= 10000; i++) {
-		if (buy[i] == maxb) cout << i << ' ';
-	}
-	cout << endl;
-	for (int i = 1; i <= 10000; i++) {
-		if (re[i] == maxr) cout << i << ' ';
+	for (int i = 'a'; i <= 'z'; i++) {
+		cout << (char)i << ':';
+		for (int j = 1; j <= a[i]; j++) {
+			cout << '*';
+		}
+		cout << endl;
 	}
 	return 0;
 }
