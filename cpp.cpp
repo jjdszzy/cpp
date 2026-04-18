@@ -1,22 +1,14 @@
 ﻿#include <iostream>
-#include <string>
 using namespace std;
-int a[124];
 int main() {
-	string s;
-	getline(cin, s);
-	for (int i = 0; i <= s.size()-1; i++) {
-		int n = s[i];
-		if ('a'<=n&&n<='z') {
-			a[n]++;
-		}
+	int m, n;
+	cin >> n >> m;
+	int cnt = 0;
+	for (int i = 1; i <= n - 2 && i <= (m - 2) / 3; i++) {
+		int j2 = 3 * m - n - 8 * i;
+		int k2 = 6 * i - 3 * m + 3 * n;
+		if (j2 % 2 == 0 && k2 % 2 == 0 && j2 > 1 && k2 > 5) cnt++;
 	}
-	for (int i = 'a'; i <= 'z'; i++) {
-		cout << (char)i << ':';
-		for (int j = 1; j <= a[i]; j++) {
-			cout << '*';
-		}
-		cout << endl;
-	}
+	cout << cnt;
 	return 0;
 }
